@@ -27,6 +27,21 @@ pre {
     color: #dc312e;
 }
 
+ul.star-list {
+    list-style-type: none;
+}
+
+ul.star-list li:before {
+    content: '*';
+    width: 1em !important;
+    margin-left: -1em;
+    display: inline-block;
+}
+
+#messages p {
+    color: #586d74;
+}
+
 .command-prompt {
     position: absolute;
     bottom: 0;
