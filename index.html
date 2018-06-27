@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Замок If - Old School Chat - Олдскульный чат</title>
-    <meta name="description" content="Старый, всеми забытый чат в новом воплощении заряженный новыми технологиями под обверткой ретро стиля хардкорных мазафакеров.">
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <meta name="description"
+          content="Старый, всеми забытый чат в новом воплощении заряженный новыми технологиями под обверткой ретро стиля хардкорных мазафакеров.">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&amp;subset=cyrillic,cyrillic-ext"
+          rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -23,25 +25,68 @@ __________________________________________________________/\\\\\\_______________
        __\///\\\\\\\\_\//\\\\\\\\/\\__/\\\\\\\\\\____\//\\\\\____/\\\\\\\\\__\//\\\\\\\\\\_______________\/\\\____\/\\\_______/\\\_\/\\\_________\//\\\\\\\\\__
         ____\////////___\////////\//__\//////////______\/////____\/////////____\//////////________________\///_____\///_______\///__\///___________\/////////___
 
+            migrated from: castle.istu.edu
     </pre>
         <p class="color-blue">Добро пожаловать в Замок Иф! <br> Пожалуйсте придерживайтесь простых правил:</p>
         <ul class="color-green star-list">
             <li>Желательно не материться, а то <strike>хуй</strike> отвалится или <strike>пизда</strike> порвется.</li>
             <li>Не обзывайтесь и не оскорбляйте друг друга, для этого есть другие чаты.</li>
-            <li>Не флудите, не флудите, не флудите, не флудите, не флудите, не флудите, не флудите, не флудите, не флудите, не флудите, не флудите, не флудите!</li>
+            <li>Не флудите, не флудите, не флудите, не флудите, не флудите, не флудите, не флудите, не флудите, не
+                флудите, не флудите, не флудите, не флудите!
+            </li>
             <li>Starajtes' ne pisat' translitom, e'to pizdec kak nepriyatno chitat'.</li>
             <li>Уважайте олдскульных людей, их и так мало осталось.</li>
         </ul>
         <p class="color-red">При нарушении этих простых правил — дичайший бан!</p>
+        <noscript>
+            <p class="color-magenta">
+                >>> ВНИМАНИЕ! У вас выключен JavaScript, отныне вы идете стройным путем на хуй! <<<
+            </p>
+        </noscript>
     </div>
     <div id="messages">
-        <p>2018-06-27 19:18:17</p>
+        <p class="message">
+            <span class="timestamp">2018-06-27 19:18:17</span>
+            <span class="nikname">Phantomas</span><span class="divider">:</span>
+            <span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget volutpat nulla, quis laoreet lectus.</span>
+        </p>
+        <p class="message">
+            <span class="timestamp">2018-06-27 19:18:17</span>
+            <span class="nikname">Phantomas</span><span class="divider">:</span>
+            <span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget volutpat nulla, quis laoreet lectus.</span>
+        </p>
+        <p class="message">
+            <span class="timestamp">2018-06-27 19:18:17</span>
+            <span class="nikname">Phantomas</span><span class="divider">:</span>
+            <span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget volutpat nulla, quis laoreet lectus.</span>
+        </p>
+        <p class="message">
+            <span class="timestamp">2018-06-27 19:18:17</span>
+            <span class="nikname">Phantomas</span><span class="divider">:</span>
+            <span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget volutpat nulla, quis laoreet lectus.</span>
+        </p>
+        <p class="message">
+            <span class="timestamp">2018-06-27 19:18:17</span>
+            <span class="nikname">Phantomas</span><span class="divider">:</span>
+            <span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget volutpat nulla, quis laoreet lectus.</span>
+        </p>
     </div>
 </main>
 <footer class="command-prompt">
     <div class="container-fluid">
-        anonym@castle-if.ru:~$
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">anonym@castle-if.ru:~$</span>
+            </div>
+            <input type="text" class="form-control" id="prompt" autofocus onchange="send.call(this)">
+        </div>
     </div>
 </footer>
+<script>
+    window.scrollTo(0, document.body.scrollHeight);
+    function send() {
+        this.value = '';
+    }
+</script>
 </body>
 </html>

@@ -15,6 +15,10 @@ pre {
     color: #839495;
 }
 
+pre.hello-banner {
+    color: #2aa197;
+}
+
 .color-blue {
     color: #268ad2;
 }
@@ -25,6 +29,10 @@ pre {
 
 .color-red {
     color: #dc312e;
+}
+
+.color-magenta {
+    color: #d33582;
 }
 
 ul.star-list {
@@ -43,9 +51,28 @@ ul.star-list li:before {
 }
 
 .command-prompt {
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
-    height: 60px;
-    line-height: 60px;
+    background: #003440;
+}
+
+.command-prompt .form-control {
+    color: #839495;
+    background-color: transparent;
+    border: none;
+}
+
+.command-prompt .form-control:focus {
+    color: #839495;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.command-prompt .input-group-text {
+    color: #839495;
+    background-color: transparent;
+    border: none;
+    padding-right: 0;
 }
