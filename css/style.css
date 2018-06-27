@@ -1,0 +1,36 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'IBM Plex Mono', monospace;
+    background-color: #002833;
+    color: #839495;
+}
+
+pre {
+    font-family: 'IBM Plex Mono', monospace;
+    color: #839495;
+}
+
+.color-blue {
+    color: #268ad2;
+}
+
+.color-green {
+    color: #859901;
+}
+
+.color-red {
+    color: #dc312e;
+}
+
+.command-prompt {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+}
