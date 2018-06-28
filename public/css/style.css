@@ -50,6 +50,11 @@ ul.star-list li:before {
     color: #586d74;
 }
 
+#messages a:hover {
+    text-decoration: none;
+    border-bottom: 1px dashed;
+}
+
 .command-prompt {
     position: fixed;
     bottom: 0;

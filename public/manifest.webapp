@@ -1,0 +1,22 @@
+{
+  "version": "3.0.0",
+  "name": "Castle If",
+  "launch_path": "/index.html",
+  "description": "Олдскульный чат из начала 2000-х только для олдфагов.",
+  "developer": {
+    "name": "Arsen Bespalov",
+    "url": "https://arsen.pw"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "ru",
+  "permissions": {
+  },
+  "locales": {
+    "ru": {
+      "name": "Castle If",
+      "description": "Олдскульный чат из начала 2000-х только для олдфагов."
+    }
+  }
+}

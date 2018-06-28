@@ -1,0 +1,8 @@
+{
+  "name": "Castle If",
+  "short_name": "CastleIf",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "landscape",
+  "gcm_sender_id": "103953800507"
+}
