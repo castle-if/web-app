@@ -10,6 +10,10 @@ function CastleIf() {
     var actionInput = this.actionInput.bind(this);
     this.messageInput.addEventListener('keyup', actionInput);
 
+    // звуки для уведомлений
+    this.messageSound = new Audio('audio/message.mp3');
+    this.personalMessageSound = new Audio('audio/personal-message.mp3');
+
     this.initFirebase();
 }
 
@@ -245,8 +249,13 @@ CastleIf.prototype.displayMessage = function(key, timestamp, name, text) {
     if (text) {
         messageElement.textContent = text;
         messageElement.innerHTML = messageElement.innerHTML.replace(/[<>/]/g, '');
+
+        // выделим персональное сообщение
         if (text.indexOf(this.getUserName()) > -1) {
             div.classList.add('focus');
+            this.personalMessageSound.play();
+        } else {
+            this.messageSound.play();
         }
     }
 
