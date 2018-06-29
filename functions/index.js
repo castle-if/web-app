@@ -14,6 +14,7 @@ exports.sendNotifications = functions.database.ref('/messages/{messageId}').onCr
         notification: {
             title: `${snapshot.val().name} написал сообщение`,
             body: text.length <= 100 ? text : text.substring(0, 97) + '...',
+            icon: '/images/profile_placeholder.png',
             click_action: `https://castle-if.ru`
         }
     };
