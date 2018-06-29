@@ -7,7 +7,7 @@ function CastleIf() {
     this.messageInput = document.getElementById('prompt');
     this.userName = document.getElementById('user-name');
 
-    let actionInput = this.actionInput.bind(this);
+    var actionInput = this.actionInput.bind(this);
     this.messageInput.addEventListener('keyup', actionInput);
 
     this.initFirebase();
@@ -20,7 +20,12 @@ CastleIf.prototype.initFirebase = function () {
     // Создадим ярлычки на сервисы Firebase
     this.auth = firebase.auth();
     this.database = firebase.database();
-    this.messaging = firebase.messaging();
+    try {
+        this.messaging = firebase.messaging();
+    } catch (e) {
+        this.messaging = null;
+        console.log(e);
+    }
     // Попоробуем получить статус авторизации из Firebase
     this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
 };
@@ -30,7 +35,7 @@ CastleIf.prototype.initFirebase = function () {
  * И хуй мы ложили на написание своих методов авторизации, опа - готова!
  */
 CastleIf.prototype.signIn = function () {
-    let profider = new firebase.auth.GoogleAuthProvider();
+    var profider = new firebase.auth.GoogleAuthProvider();
     this.auth.signInWithPopup(profider);
 };
 
@@ -63,8 +68,8 @@ CastleIf.prototype.isUserSignedIn = function () {
  * Функция загружает древние сообщения, ну, те которые еще до вошедшего были
  */
 CastleIf.prototype.loadMessages = function () {
-    let setMessage = function (snap) {
-        let data = snap.val();
+    var setMessage = function (snap) {
+        var data = snap.val();
         this.displayMessage(snap.key, data.createdAt, data.name, data.text);
     }.bind(this);
 
@@ -92,16 +97,18 @@ CastleIf.prototype.saveMessage = function(messageText) {
  * Сохраним токен устройства для рассылки уведомлений, чтобы нихуя не пропустить!
  */
 CastleIf.prototype.saveMessagingDeviceToken = function () {
-    this.messaging.getToken().then(function (currentToken) {
-        if (currentToken) {
-            console.log('FCM token:', currentToken);
-            this.database.ref('/fcmTokens').child(currentToken).set(this.auth.currentUser.uid);
-        } else {
-            this.requestNotificationsPermissions();
-        }
-    }.bind(this)).catch(function (error) {
-        console.log('Получить токен устройства не получилось, а хули!', error);
-    });
+    if (this.messaging) {
+        this.messaging.getToken().then(function (currentToken) {
+            if (currentToken) {
+                console.log('FCM token:', currentToken);
+                this.database.ref('/fcmTokens').child(currentToken).set(this.auth.currentUser.uid);
+            } else {
+                this.requestNotificationsPermissions();
+            }
+        }.bind(this)).catch(function (error) {
+            console.log('Получить токен устройства не получилось, а хули!', error);
+        });
+    }
 };
 
 /**
@@ -211,12 +218,22 @@ CastleIf.HELP_MESSAGE =
  * @param text Текст сообщения, очень важного и романтичного, из далеких 2000-х
  */
 CastleIf.prototype.displayMessage = function(key, timestamp, name, text) {
-    let div = document.getElementById(key);
+    var div = document.getElementById(key);
     if (!div) {
-        let container = document.createElement('div');
+        var container = document.createElement('div');
         container.innerHTML = CastleIf.MESSAGE_TEMPLATE;
         div = container.firstChild;
         div.setAttribute('id', key);
+
+        // повесим слушатель на клик по имени
+        var nikname = div.querySelector('.nikname');
+        var data = {
+            class: this,
+            nikname: nikname
+        };
+        var actionNikname = this.actionNikname.bind(data);
+        nikname.addEventListener('click', actionNikname);
+
         this.messageList.appendChild(div);
     }
 
@@ -224,10 +241,13 @@ CastleIf.prototype.displayMessage = function(key, timestamp, name, text) {
 
     div.querySelector('.timestamp').textContent = date.toLocaleDateString('ru') + ' ' + date.toLocaleTimeString('ru');
     div.querySelector('.nikname').textContent = name;
-    let messageElement = div.querySelector('.text');
+    var messageElement = div.querySelector('.text');
     if (text) {
         messageElement.textContent = text;
         messageElement.innerHTML = messageElement.innerHTML.replace(/[<>/]/g, '');
+        if (text.indexOf(this.getUserName()) > -1) {
+            div.classList.add('focus');
+        }
     }
 
     this.scrollChat();
@@ -242,7 +262,7 @@ CastleIf.prototype.scrollChat = function () {
 };
 
 CastleIf.prototype.hashCode = function () {
-    let hash = 0;
+    var hash = 0;
     // for (let i = 0; i < )
 };
 
@@ -252,7 +272,7 @@ CastleIf.prototype.hashCode = function () {
  * @param event
  */
 CastleIf.prototype.actionInput = function (event) {
-    const message = this.messageInput.value;
+    var message = this.messageInput.value;
 
     if (message && event.keyCode === 13) {
         if (message.indexOf('/login') === 0) {
@@ -275,6 +295,12 @@ CastleIf.prototype.actionInput = function (event) {
             }
         }
     }
+};
+
+CastleIf.prototype.actionNikname = function (event) {
+    event.preventDefault();
+    this.class.messageInput.value += `${this.nikname.textContent}, `;
+    this.class.messageInput.focus();
 };
 
 /**

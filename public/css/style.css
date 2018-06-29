@@ -50,6 +50,12 @@ ul.star-list li:before {
     color: #586d74;
 }
 
+#messages p.focus {
+    background-color: #003440;
+    padding: 5px;
+    border-right: 3px solid red;
+}
+
 #messages a:hover {
     text-decoration: none;
     border-bottom: 1px dashed;
