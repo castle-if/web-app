@@ -95,7 +95,7 @@ CastleIf.prototype.saveMessagingDeviceToken = function () {
     this.messaging.getToken().then(function (currentToken) {
         if (currentToken) {
             console.log('FCM token:', currentToken);
-            this.database.ref('/fcmTokens').child(currentToken).set(this.auth.currentUser.id);
+            this.database.ref('/fcmTokens').child(currentToken).set(this.auth.currentUser.uid);
         } else {
             this.requestNotificationsPermissions();
         }
