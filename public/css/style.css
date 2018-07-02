@@ -35,6 +35,13 @@ pre.hello-banner {
     color: #d33582;
 }
 
+.alert-black {
+    background: #000;
+    margin: 0 -15px 1rem -15px;
+    padding: 5px 15px;
+    border-right: 3px solid red;
+}
+
 ul.star-list {
     list-style-type: none;
 }
@@ -86,4 +93,25 @@ ul.star-list li:before {
     background-color: transparent;
     border: none;
     padding-right: 0;
+}
+
+#online-users {
+    position: fixed;
+    top: 0;
+    right: 15px;
+    padding: 10px;
+    background: rgba(0, 52, 64, 0.4);
+    color: rgba(131, 148, 149, 0.4);
+    width: 20%;
+    display: block;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 50%;
+    transition: background-color .4s, color .4s;
+}
+#online-users:hover {
+    background: rgba(0, 52, 64, 1);
+    color: rgba(131, 148, 149, 1);
 }
